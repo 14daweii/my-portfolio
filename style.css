@@ -1,0 +1,225 @@
+/* GENERAL 
+------------------------------------------------------------------------------------------------------------- */
+
+	@import url('https://fonts.googleapis.com/css?family=Molengo|Ubuntu:300,300i,400,400i,500,500i,700,700i|Khand:300,400,500,600,700');
+
+	html, body {
+		width: 100%;
+		height: 100%;
+		min-width: 360px;
+		margin: 0px;
+		padding: 0px;
+		background: #ffffff;
+		color: #5a6464;
+		font-family: Ubuntu;
+		font-size: 14px;
+	}
+
+
+/* ELEMENT 
+------------------------------------------------------------------------------------------------------------- */
+
+	.icon-box {
+		display: inline-block;
+		min-width: 20px;
+		margin-right: 6px;
+		font-size: 0.9em;
+		text-align: center;
+	}
+
+	a {text-decoration: none; transition: ease 0.25s;}
+	input, button, textarea {outline: none; background: transparent; border: 1px solid #c8c8c8; color: #5a6464; font-family: Ubuntu; font-size: 1em; text-overflow: ellipsis; transition: ease 0.25s; cursor: pointer;}
+	button {height: 36px; border-color: transparent; border-radius: 6px;}
+	button:hover {background: #f5faff; color: #468cff;}
+	textarea {padding: 12px; font-size: 0.875em; line-height: 1.75em; overflow-x: hidden; overflow-y: auto; cursor: default;}
+	textarea:focus {border-color: #ff8c46;}
+
+
+/* HEADER 
+------------------------------------------------------------------------------------------------------------- */
+
+	header {
+		position: relative;
+		padding: 12px 24px;
+		background: #ffffff;
+		box-sizing: border-box;
+		box-shadow: 0px 2px 4px 0px #e1e1e1;
+		color: #5a6464;
+	}
+
+	header button {
+		font-family: Khand;
+		font-size: 1.125em;
+		text-align: left;
+	}
+
+	.site-name {font-family: Khand; font-size: 1.875em;}
+	.site-icon {margin-left: 12px; font-size: 1.25em;}
+
+	.menu {float: right; margin-top: -38px; padding: 0px 24px;}
+	.menu-box {display: inline-flex;}
+	.menu-bm, .menu-pw, .menu-sas, .menu-dep {position: relative;}
+	.menu-btn {min-width: 160px; margin: 0px 2px; padding-left: 18px; box-sizing: border-box;}
+	.menu-btn:hover {box-shadow: 0px 0px 10px 0px #c8c8c8;}	
+	.menu-list {display: none; position: absolute; width: 160px; background: #fffaf0; border-bottom: 4px solid #ff8c46;}
+	.menu-bm:hover #bmBTN, .menu-sas:hover #sasBTN, .menu-dep:hover #depBTN {background: #fffaf0; border-radius: 6px 6px 0px 0px; color: #ff8c46; box-shadow: 0px 0px 10px 0px #c8c8c8;}
+	.menu-bm:hover #bmLIST, .menu-sas:hover #sasLIST, .menu-dep:hover #depLIST {display: block; box-shadow: 0px 4px 6px 0px #c8c8c8;}
+	.menu-list button {position: relative; width: 100%; padding: 6px 24px; border-radius: 0px; color: #ff8c46;}
+	.menu-list button:hover {background: #ff8c46; color: #fffaf0;}
+
+	#bmLIST  {left: 2px;}
+	#sasLIST {left: 2px;}
+	#depLIST {right: 2px;}
+	#pwBTN input {width: 80px; border-color: transparent; font-family: Khand;}
+	#pwBTN:hover, #pwBTN:hover input[type=text] {background: #fffaf0; color: #ff8c46;}
+
+	#snackbar {
+		visibility: hidden;
+		position: absolute;
+		top: 0px;
+		left: 1%;
+		width: 160px;
+		padding: 6px 0px;
+		background: #ff8c46;
+		border-radius: 6px;
+		color: #fffaf0;
+		font-family: Khand;
+		font-size: 1.125em;
+		text-align: center;
+		z-index: 1;
+	}
+
+	#snackbar.show {visibility: visible; -webkit-animation: fadein 0.5s, fadeout 0.5s 1.5s; animation: fadein 0.5s, fadeout 0.5s 1.5s;}
+	@-webkit-keyframes fadein {from {opacity: 0;} to {opacity: 1;}}
+	@keyframes fadein {from {opacity: 0;} to {opacity: 1;}}
+	@-webkit-keyframes fadeout {from {opacity: 1;} to {opacity: 0;}}
+	@keyframes fadeout {from {opacity: 1;} to {opacity: 0;}}
+
+
+/* SECTION 
+------------------------------------------------------------------------------------------------------------- */
+
+	section {
+		display: block;
+		width: 100%;
+		height: auto;
+		margin: 0px;
+		padding: 40px 30px;
+		background: #ffffff;
+		box-sizing: border-box;
+		overflow: auto;
+	}
+
+
+/* CARD
+------------------------------------------------------------------------------------------------------------- */
+
+	.card {float: left; width: 25%; min-height: 480px; padding: 20px; border: 1px solid transparent; border-radius: 6px; box-sizing: border-box; transition: ease 0.25s;}
+	.card:hover {box-shadow: 0px 0px 6px 0px #468cff;}
+	.card-name {padding: 12px; color: #468cff; font-family: Molengo; font-size: 1.5em; text-shadow: 1px 1px 2px #e1e1e1;}
+	.card-name span.icon-box {margin-left: 10px; font-size: 0.75em;}
+	.card-list {display: inline-block; padding: 6px;}
+	.card-list button {width: 100%; margin: 2px 0px; padding: 6px; color: #5a6464; text-align: left;}
+	.card-list button:hover {background: #f5faff; color: #468cff;}
+	
+	.shell {position: relative;}
+	.shell-list {display: none; position: absolute; width: 100%; margin-top: -2px; padding: 0px 6px 12px 24px; background: #f5faff; border: none; border-radius: 0px 0px 6px 6px; box-sizing: border-box;}
+	.shell:hover .shells-btn {background: #f5faff; border-radius: 6px 6px 0px 0px; color: #468cff;}
+	.shell:hover .shell-list {display: inline-block;}
+	.shell-list button {width: auto; height: auto; margin: 4px; padding: 2px 6px; color: #468cff; font-size: 0.75em;}
+	.shell-list button:hover {background: #468cff; color: #f5faff;}
+
+	.depstore:hover {box-shadow: 0px 0px 6px 0px #ff8c46;}
+	.depstore .card-name {color: #ff8c46;}
+	.depstore .card-list button:hover {background: #fffaf0; color: #ff8c46;}
+
+
+/* PAGE
+------------------------------------------------------------------------------------------------------------- */
+
+	#PAGE {display: inline-flex; padding: 0px;}
+
+	.tabs {padding: 20px 0px; background: #f0f0f0; box-sizing: border-box;}
+	.tabs button {color: #5a6464;}
+	.tabs button:hover {background: #e1e1e1;}
+	.tabs button.active {background: #ffffff; color: #468cff;}
+	.tabLink {display: block; width: 15%; min-width: 200px; margin: 4px 0px; padding: 0px 16px; border-radius: 0px; text-align: left;}
+	.tabSpace {width: 80%; padding: 30px;}
+
+	.title {margin-bottom: 6px; color: #ff8c46; font-family: Molengo; font-size: 1.25em;}
+	.stage {margin-bottom: 20px; padding: 2px;}
+
+	.script {width: 100%; max-width: 900px; padding: 0px;}
+	.script-btn {max-width: 900px; text-align: right;}
+	.script-btn button {height: auto; margin-right: -28px; padding: 4px 8px; font-size: 0.875em;}
+	.script-btn button:hover {background: #f5faff; color: #468cff;}
+	.script-txt textarea {width: 100%;}
+
+
+/* FOOTER 
+------------------------------------------------------------------------------------------------------------- */
+
+	footer {
+		clear: left;
+		width: 100%;
+		padding: 10px 0px;
+		background: #ffffff;
+		border-top: 2px solid #e1e1e1;
+		box-sizing: border-box;
+		color: #5a6464;
+		font-family: Khand;
+		font-size: 0.875em;
+		text-align: center;
+	}
+
+	.version-name {margin: 0px 10px;}
+	.version-link img {height: 14px; margin-right: 4px;}
+	.version-link a {padding: 2px 6px; border-radius: 6px;}
+	.version-link a:visited {color: #5a6464}
+	.version-link a:hover {background: #e1e1e1;}
+
+
+/* RESPONSIVE 
+------------------------------------------------------------------------------------------------------------- */
+
+	@media only screen and (max-width: 960px) {
+
+		/* Decrease icon box margin */
+		.menu-btn .icon-box {margin: auto;}
+
+		/* Decrease button width */
+		.menu-btn {min-width: 40px; padding: 0px; text-align: center;}
+
+		/* Hide button text */
+		.hidden {display: none;}
+
+		/* Increase menu width */
+		#bmLIST, #sasLIST, #depLIST {min-width: 172px;}
+
+		/* Reposition menu list */
+		#sasLIST {left: -86px;}
+
+		/* Increase card width */
+		.card {width: 50%;}
+
+		/* Decrease tab width */
+		.tabs {min-width: 48px;}
+		.tabLink {min-width: 100%; padding: 0px 2px 0px 8px; text-align: center;}
+
+	}
+
+	@media only screen and (max-width: 640px) {
+
+		/* Align page header to the center */
+		header {height: auto; text-align: center;}
+
+		/* Hide site icon */
+		.site-icon {display: none;}
+
+		/* Align menu to the center */
+		.menu {float: none; margin: 2px 0px -2px 0px;}
+
+		/* Increase card width */
+		.card {width: 100%; min-height: 400px;}
+
+	}

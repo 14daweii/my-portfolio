@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Deployment Team</title>
+	<link rel="icon" type="image/png" href="images/favicon.png">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="functions.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+	<header>
+		<div class="site">
+			<span class="site-name">Widget Setup</span>
+			<span class="site-icon"><i class="fas fa-rocket"></i></span>
+		</div>
+		<div class="menu">
+			<div class="menu-box">
+				<div class="menu-bm">
+					<button class="menu-btn" id="bmBTN"><span class="icon-box"><i class="far fa-bookmark"></i></span><span class="hidden">Bookmarks</span></button>
+					<div class="menu-list" id="bmLIST">
+						<button onclick="goSalesforce()">Salesforce</button>
+						<button onclick="goCalendar()">Calendar</button>
+						<button onclick="goADP()">ADP</button>
+						<button onclick="goExpensify()">Expensify</button>
+						<button onclick="goIntranet()">Intanet</button>
+						<button onclick="goServices()">Services Team</button>
+						<button onclick="goFlightSchool()">Flight School</button>
+					</div>						
+				</div>
+				<div class="menu-pw">
+					<button onclick="goPassword()" class="menu-btn" id="pwBTN" title="Click to Copy Password"><span class="icon-box"><i class="fas fa-fingerprint"></i></span><span class="hidden"><input type="text" value="Fr@nce@fifa2018" id="myInput"></span></button>
+					<div class="snackbar" id="snackbar">Password Copied!</div>					
+				</div>
+				<div class="menu-sas">
+					<button class="menu-btn" id="sasBTN"><span class="icon-box"><i class="fas fa-feather-alt"></i></span><span class="hidden">SAS Team</span></button>
+					<div class="menu-list" id="sasLIST">
+						<button onclick="goDistrict()">Add New District</button>
+						<button onclick="goSAS()">Administration</button>
+					</div>					
+				</div>
+				<div class="menu-dep">
+					<button class="menu-btn" id="depBTN"><span class="icon-box"><i class="fas fa-bolt"></i></span><span class="hidden">Deployment</span></button>
+					<div class="menu-list" id="depLIST">
+						<button onclick="goAddProject()">Add New Project</button>
+						<button onclick="goAddClient()">Add New Client</button>
+						<button onclick="goAddReplyall()">Add Reply All</button>
+						<button onclick="goClipboard()">Clipboard</button>
+						<button onclick="goSuperAdmin()">Super Admin</button>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</header>
+	<section id="PAGE">
+		<div class="tabs">
+			<button class="tabLink" onclick="openTAB (event, 'TAB1')" id="defaultOpen" title="Widget with Checkboxes">
+				<span class="icon-box"><i class="far fa-check-square"></i></span>
+				<span class="hidden">Checkboxes</span>
+			</button>
+			<button class="tabLink" onclick="openTAB (event, 'TAB2')" title="Widget with Drop-down List">
+				<span class="icon-box"><i class="far fa-caret-square-down"></i></span>
+				<span class="hidden">Drop-down List</span>
+			</button>
+			<button class="tabLink" onclick="openTAB (event, 'TAB3')" title="Widget with both Drop-down List and Checkboxes">
+				<span class="icon-box"><i class="far fa-list-alt"></i></span>
+				<span class="hidden">Two-Tier Widget</span>
+			</button>
+		</div>
+		<div class="tabSpace">
+			<div id="TAB1" class="tabContent">
+				<div class="title">Structure</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="W101" rows="6">
+<curriculumwidget>
+	<table border="0" cellspacing="0" cellpadding="2">
+		<tr><td valign="top"><curriculumwidgetdatabinding edit="checkboxes" display="ul" name="NameOfWidget"/></td></tr>
+		<tr><td valign="top"><curriculumwidgetdatabinding edit="textarea" length="50" display="div" widgetlabel="Notes"/></td></tr>
+	</table>
+</curriculumwidget></textarea>
+						</div>
+						<div class="script-btn"><button id="copyW101"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var W101 = document.getElementById("W101"); 
+							var button = document.getElementById("copyW101"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); W101.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Data List</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="W102" rows="6">
+<mappingcategoryvaluelists>
+	<mappingcategoryvaluelist name="NameOfWidget">
+		<mappingcategoryvalue mappingcategoryvalueid="9001"><![CDATA[check list 1]]></mappingcategoryvalue>
+		<mappingcategoryvalue mappingcategoryvalueid="9002"><![CDATA[check list 2]]></mappingcategoryvalue>
+	</mappingcategoryvaluelist>
+</mappingcategoryvaluelists></textarea>
+						</div>
+						<div class="script-btn"><button id="copyW102"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var W102 = document.getElementById("W102"); 
+							var button = document.getElementById("copyW102"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); W102.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+			</div>
+			<div id="TAB2" class="tabContent">
+				<div class="title">Structure</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="W201" rows="6">
+<curriculumwidget>
+	<table border="0" cellspacing="0" cellpadding = "4">
+		<tr><td valign="top"><curriculumwidgetdatabinding edit="dynamicselectlist" widgetlabel="Title" display="ul" name="NameOfWidget"/></td></tr>
+		<tr><td valign="top"><curriculumwidgetdatabinding edit="textarea" length="50" display="div" widgetlabel="Notes"/></td></tr>
+	</table>
+</curriculumwidget></textarea>
+						</div>
+						<div class="script-btn"><button id="copyW201"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var W201 = document.getElementById("W201"); 
+							var button = document.getElementById("copyW201"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); W201.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Data List</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="W202" rows="6">
+<mappingcategoryvaluelists>
+	<mappingcategoryvaluelist name="NameOfWidget">
+		<mappingcategoryvalue mappingcategoryvalueid="8001"><![CDATA[Drop down 1]]></mappingcategoryvalue>
+		<mappingcategoryvalue mappingcategoryvalueid="8002"><![CDATA[Drop down 2]]></mappingcategoryvalue>
+	</mappingcategoryvaluelist>
+</mappingcategoryvaluelists></textarea>
+						</div>
+						<div class="script-btn"><button id="copyW202"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var W202 = document.getElementById("W202"); 
+							var button = document.getElementById("copyW202"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); W202.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+			</div>
+			<div id="TAB3" class="tabContent">
+				<div class="title">Structure</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="W301" rows="6">
+<curriculumwidget>
+	<table border="0" cellspacing="0" cellpadding = "4">
+		<tr><td valign="top"><curriculumwidgetdatabinding edit="nesteddynamicselectlist" display="nestedul" group="all" name="Joined"/></td></tr>
+		<tr><td valign="top"><curriculumwidgetdatabinding edit="textarea" length="50" display="div" widgetlabel="Notes"/></td></tr>
+	</table>
+</curriculumwidget></textarea>
+						</div>
+						<div class="script-btn"><button id="copyW301"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var W301 = document.getElementById("W301"); 
+							var button = document.getElementById("copyW301"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); W301.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Data List</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="W302" rows="10">
+<mappingcategoryvaluelists>
+	<mappingcategoryvaluelist group="all" name="List 1">
+		<mappingcategoryvalue mappingcategoryvalueid="7001"><![CDATA[Checkbox 1.1]]></mappingcategoryvalue>
+		<mappingcategoryvalue mappingcategoryvalueid="7002"><![CDATA[Checkbox 1.2]]></mappingcategoryvalue>
+	</mappingcategoryvaluelist>
+	<mappingcategoryvaluelist group="all" name="List 2">
+		<mappingcategoryvalue mappingcategoryvalueid="7003"><![CDATA[Checkbox 2.1]]></mappingcategoryvalue>
+		<mappingcategoryvalue mappingcategoryvalueid="7004"><![CDATA[Checkbox 2.2]]></mappingcategoryvalue>
+	</mappingcategoryvaluelist>
+</mappingcategoryvaluelists></textarea>
+						</div>
+						<div class="script-btn"><button id="copyW302"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var W302 = document.getElementById("W302"); 
+							var button = document.getElementById("copyW302"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); W302.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">document.getElementById("defaultOpen").click();</script>
+	</section>
+	<footer>
+		<div class="version">
+			<span class="version-name">Deployment Team - Version 1.5.1</span>
+			<span class="version-link">Powered by <a href="https://airtable.com/" target="_blank"><img src="images/airtable.png">Airtable</a></span>
+		</div>
+	</footer>
+</body>
+</html>
+
+

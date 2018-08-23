@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Deployment Team</title>
+	<link rel="icon" type="image/png" href="images/favicon.png">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="functions.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+	<header>
+		<div class="site">
+			<span class="site-name">Deployment Team</span>
+			<span class="site-icon"><i class="fas fa-rocket"></i></span>
+		</div>
+		<div class="menu">
+			<div class="menu-box">
+				<div class="menu-bm">
+					<button class="menu-btn" id="bmBTN"><span class="icon-box"><i class="far fa-bookmark"></i></span><span class="hidden">Bookmarks</span></button>
+					<div class="menu-list" id="bmLIST">
+						<button onclick="goSalesforce()">Salesforce</button>
+						<button onclick="goCalendar()">Calendar</button>
+						<button onclick="goADP()">ADP</button>
+						<button onclick="goExpensify()">Expensify</button>
+						<button onclick="goIntranet()">Intanet</button>
+						<button onclick="goServices()">Services Team</button>
+						<button onclick="goFlightSchool()">Flight School</button>
+					</div>						
+				</div>
+				<div class="menu-pw">
+					<button onclick="goPassword()" class="menu-btn" id="pwBTN" title="Click to Copy Password"><span class="icon-box"><i class="fas fa-fingerprint"></i></span><span class="hidden"><input type="text" value="Fr@nce@fifa2018" id="myInput"></span></button>
+					<div class="snackbar" id="snackbar">Password Copied!</div>					
+				</div>
+				<div class="menu-sas">
+					<button class="menu-btn" id="sasBTN"><span class="icon-box"><i class="fas fa-feather-alt"></i></span><span class="hidden">SAS Team</span></button>
+					<div class="menu-list" id="sasLIST">
+						<button onclick="goDistrict()">Add New District</button>
+						<button onclick="goSAS()">Administration</button>
+					</div>					
+				</div>
+				<div class="menu-dep">
+					<button class="menu-btn" id="depBTN"><span class="icon-box"><i class="fas fa-bolt"></i></span><span class="hidden">Deployment</span></button>
+					<div class="menu-list" id="depLIST">
+						<button onclick="goAddProject()">Add New Project</button>
+						<button onclick="goAddClient()">Add New Client</button>
+						<button onclick="goAddReplyall()">Add Reply All</button>
+						<button onclick="goClipboard()">Clipboard</button>
+						<button onclick="goSuperAdmin()">Super Admin</button>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</header>
+	<section>
+		<div class="card">
+			<div class="card-name">Standards<span class="icon-box"><i class="fas fa-cloud"></i></span></div>
+			<div class="card-list">
+				<button onclick="goStandards()"><span class="icon-box"><i class="fas fa-search"></i></span><span>Standards Search</span></button>
+				<button onclick="goScripts()"><span class="icon-box"><i class="fas fa-magic"></i></span><span>Standards Scripts</span></button>
+				<button onclick="goRegEx()"><span class="icon-box"><i class="fas fa-hashtag"></i></span><span>RegEx Cheat Sheet</span></button>
+				<button onclick="goLatitude()"><span class="icon-box"><i class="far fa-arrow-alt-circle-up"></i></span><span>Standards Import</span></button>
+				<button onclick="goSweep()"><span class="icon-box"><i class="fas fa-broom"></i></span><span>Sweep Overview</span></button>
+				<button onclick="goMessage()"><span class="icon-box"><i class="far fa-comment-dots"></i></span><span>Rubicon Message</span></button>
+				<button onclick="goRecommendation()"><span class="icon-box"><i class="far fa-heart"></i></span><span>Recommendations</span></button>
+				<button onclick="goFlags()"><span class="icon-box"><i class="fas fa-flag-checkered"></i></span><span>Visual Flag Library</span></button>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-name">Configuration<span class="icon-box"><i class="fas fa-cogs"></i></span></div>
+			<div class="card-list">
+				<button onclick="goLocalization()"><span class="icon-box"><i class="far fa-compass"></i></span><span>Localization Editor</span></button>
+				<button onclick="goViewonly()"><span class="icon-box"><i class="fas fa-glasses"></i></span><span>View-only</span></button>
+				<button onclick="goConstants()"><span class="icon-box"><i class="fas fa-toggle-off"></i></span><span>School Constants</span></button>
+				<button onclick="goWidgets()"><span class="icon-box"><i class="far fa-check-square"></i></span><span>Widget Setup</span></button>
+				<button onclick="goSitetoSite()"><span class="icon-box"><i class="far fa-copy"></i></span><span>Site to Site Copy</span></button>
+				<button onclick="goBugs()"><span class="icon-box"><i class="fas fa-bug"></i></span><span>Report Issues</span></button>
+				<button onclick="goSuggestions()"><span class="icon-box"><i class="far fa-lightbulb"></i></span><span>Dev Suggestions</span></button>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-name">Site Build<span class="icon-box"><i class="fas fa-screwdriver"></i></span></div>
+			<div class="card-list">
+				<button onclick="goAtlas()"><span class="icon-box"><i class="fas fa-search"></i></span><span>Atlas Site Search</span></button>
+				<button onclick="goLooknFeel()"><span class="icon-box"><i class="far fa-images"></i></span><span>Look and Feel</span></button>
+				<button onclick="goState()"><span class="icon-box"><i class="far fa-map"></i></span><span>State Standards</span></button>
+				<button onclick="goSiteBuild()"><span class="icon-box"><i class="far fa-paper-plane"></i></span><span>Site Build</span></button>
+				<div class="shell">
+					<button class="shells-btn"><span class="icon-box"><i class="far fas fa-seedling"></i></span><span>Shell Systems</span></span></button>
+					<div class="shell-list">
+						<button onclick="goUbD()">Basic UbD</button>
+						<button onclick="goPDT()">Training Site</button>
+						<button onclick="goIB()">IB Templates</button>
+						<button onclick="goAU()">AU Settings</button>
+						<button onclick="goNYC()">NYC Reboot</button>
+						<button onclick="goENY()">EnageNY</button>
+						<button onclick="goECCSS()">EnageNY CCSS</button>
+						<button onclick="goOS()">OS Curriculum</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="card depstore">
+			<div class="card-name">dep Store<span class="icon-box"><i class="fas fa-cart-arrow-down"></i></span></div>
+			<div class="card-list">
+				<button onclick="goProjects()"><span class="icon-box"><i class="fas fa-tasks"></i></span><span>Deployment Queue</span></button>
+				<button onclick="goHogwarts()"><span class="icon-box"><i class="fas fa-flask"></i></span><span>Hogwarts</span></button>
+				<button onclick="goCancellations()"><span class="icon-box"><i class="far fa-meh"></i></span><span>Cancellations</span></button>
+				<button onclick="goHoroscope()"><span class="icon-box"><i class="far fa-star"></i></span><span>Horoscope</span></button>
+				<button onclick="goGallup()"><span class="icon-box"><i class="far fa-thumbs-up"></i></span><span>Strengths Finder</span></button>
+				<button onclick="goReplyall()"><span class="icon-box"><i class="fas fa-reply-all"></i></span><span>Reply All</span></button>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="version">
+			<span class="version-name">Deployment Team - Version 1.5.1</span>
+			<span class="version-link">Powered by <a href="https://airtable.com/" target="_blank"><img src="images/airtable.png">Airtable</a></span>
+		</div>
+	</footer>
+</body>
+</html>
+
+

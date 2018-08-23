@@ -1,0 +1,448 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Deployment Team</title>
+	<link rel="icon" type="image/png" href="images/favicon.png">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="functions.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+	<header>
+		<div class="site">
+			<span class="site-name">Standards Scripts</span>
+			<span class="site-icon"><i class="fas fa-rocket"></i></span>
+		</div>
+		<div class="menu">
+			<div class="menu-box">
+				<div class="menu-bm">
+					<button class="menu-btn" id="bmBTN"><span class="icon-box"><i class="far fa-bookmark"></i></span><span class="hidden">Bookmarks</span></button>
+					<div class="menu-list" id="bmLIST">
+						<button onclick="goSalesforce()">Salesforce</button>
+						<button onclick="goCalendar()">Calendar</button>
+						<button onclick="goADP()">ADP</button>
+						<button onclick="goExpensify()">Expensify</button>
+						<button onclick="goIntranet()">Intanet</button>
+						<button onclick="goServices()">Services Team</button>
+						<button onclick="goFlightSchool()">Flight School</button>
+					</div>						
+				</div>
+				<div class="menu-pw">
+					<button onclick="goPassword()" class="menu-btn" id="pwBTN" title="Click to Copy Password"><span class="icon-box"><i class="fas fa-fingerprint"></i></span><span class="hidden"><input type="text" value="Fr@nce@fifa2018" id="myInput"></span></button>
+					<div class="snackbar" id="snackbar">Password Copied!</div>					
+				</div>
+				<div class="menu-sas">
+					<button class="menu-btn" id="sasBTN"><span class="icon-box"><i class="fas fa-feather-alt"></i></span><span class="hidden">SAS Team</span></button>
+					<div class="menu-list" id="sasLIST">
+						<button onclick="goDistrict()">Add New District</button>
+						<button onclick="goSAS()">Administration</button>
+					</div>					
+				</div>
+				<div class="menu-dep">
+					<button class="menu-btn" id="depBTN"><span class="icon-box"><i class="fas fa-bolt"></i></span><span class="hidden">Deployment</span></button>
+					<div class="menu-list" id="depLIST">
+						<button onclick="goAddProject()">Add New Project</button>
+						<button onclick="goAddClient()">Add New Client</button>
+						<button onclick="goAddReplyall()">Add Reply All</button>
+						<button onclick="goClipboard()">Clipboard</button>
+						<button onclick="goSuperAdmin()">Super Admin</button>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</header>
+	<section id="PAGE">
+		<div class="tabs">
+			<button class="tabLink" onclick="openTAB (event, 'TAB1')" id="defaultOpen" title="Filter Standards">
+				<span class="icon-box"><i class="fas fa-filter"></i></span>
+				<span class="hidden">Filter Standards</span>
+			</button>
+			<button class="tabLink" onclick="openTAB (event, 'TAB2')" title="Make Standards Obsolete">
+				<span class="icon-box"><i class="far fa-eye-slash"></i></span>
+				<span class="hidden">Obsolete</span>
+			</button>
+			<button class="tabLink" onclick="openTAB (event, 'TAB3')" title="Delete Standards">
+				<span class="icon-box"><i class="far fa-trash-alt"></i></span>
+				<span class="hidden">Delete Standards</span>
+			</button>
+			<button class="tabLink" onclick="openTAB (event, 'TAB4')" title="Rename Standards">
+				<span class="icon-box"><i class="far fa-edit"></i></span>
+				<span class="hidden">Rename Standards</span>
+			</button>
+			<button class="tabLink" onclick="openTAB (event, 'TAB5')" title="Stnadards Editing Tool">
+				<span class="icon-box"><i class="fas fa-gamepad"></i></span>
+				<span class="hidden">SET</span>
+			</button>
+		</div>
+		<div class="tabSpace">
+			<div id="TAB1" class="tabContent">
+				<div class="title">Filtering Standards by ID</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S101" rows="5">
+DELETE FROM StateStandardStandardFlag_TBL WHERE StandardFlagID = 00000000 AND YearID = @YearID
+AND StateStandardID NOT in (SELECT StateStandardID FROM StateStandards_TBL WHERE YearID = @YearID AND Status = 'Custom')
+INSERT INTO StateStandardStandardFlag_TBL (StandardFlagID, StateStandardID, YearID)
+SELECT 00000000, StateStandardID, @YearID FROM StateStandards_TBL WHERE DistrictID in (0000) AND YearID = @YearID
+AND StateStandardID NOT in (SELECT StateStandardID FROM StateStandards_TBL WHERE YearID = @yearID AND Status = 'Custom')</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS101"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S101 = document.getElementById("S101"); 
+							var button = document.getElementById("copyS101"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S101.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Filtering Standards by CA Name</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S102" rows="6">
+DELETE FROM StateStandardStandardFlag_TBL WHERE StandardFlagID = 00000000 AND YearID = @YearID
+AND StateStandardID NOT in (SELECT StateStandardID FROM StateStandards_TBL WHERE YearID = @YearID AND Status = 'Custom')
+INSERT INTO StateStandardStandardFlag_TBL (StandardFlagID, StateStandardID, YearID)
+SELECT 00000000, StateStandardID, @YearID FROM StateStandards_TBL WHERE ContentareaID in (SELECT ContentareaID FROM
+Contentareas_TBL WHERE DistrictID = 0000 AND Contentarea LIKE '%name%' AND YearID = @YearID) AND YearID = @YearID
+AND StateStandardID NOT in (SELECT StateStandardID FROM StateStandards_TBL WHERE YearID = @YearID AND Status = 'Custom')</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS102"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S102 = document.getElementById("S102"); 
+							var button = document.getElementById("copyS102"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S102.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Filtering Standards by CSA Name</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S103" rows="6">
+DELETE FROM StateStandardStandardFlag_TBL WHERE StandardFlagID = 00000000 AND YearID = @YearID
+AND StateStandardID NOT in (SELECT StateStandardID FROM StateStandards_TBL WHERE YearID = @YearID AND Status = 'Custom')
+INSERT INTO StateStandardStandardFlag_TBL (StandardFlagID, StateStandardID, YearID)
+SELECT 00000000, StateStandardID, @YearID FROM StateStandards_TBL WHERE ContentsubareaID in (SELECT ContentsubareaID FROM
+Contentsubareas_TBL WHERE DistrictID = 0000 AND Contentsubarea LIKE '%name%' AND YearID = @YearID) AND YearID = @YearID
+AND StateStandardID NOT in (SELECT StateStandardID FROM StateStandards_TBL WHERE YearID = @YearID AND Status = 'Custom')</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS103"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S103 = document.getElementById("S103"); 
+							var button = document.getElementById("copyS103"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S103.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Filtering Standards by SSL Name</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S104" rows="6">
+DELETE FROM StateStandardStandardFlag_TBL WHERE StandardFlagID = 00000000 AND YearID = @YearID
+AND StateStandardID NOT in (SELECT StateStandardID FROM StateStandards_TBL WHERE YearID = @YearID AND Status = 'Custom')
+INSERT INTO StateStandardStandardFlag_TBL (StandardFlagID, StateStandardID, YearID)
+SELECT 00000000, StateStandardID, @YearID FROM StateStandards_TBL WHERE StatestandardlevelID in (SELECT StatestandardlevelID FROM
+Statestandardlevels_TBL WHERE DistrictID = 0000 AND Leveltitle LIKE '%name%' AND YearID = @YearID) AND YearID = @YearID
+AND StateStandardID NOT in (SELECT StateStandardID FROM StateStandards_TBL WHERE YearID = @YearID AND Status = 'Custom')</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS104"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S104 = document.getElementById("S104"); 
+							var button = document.getElementById("copyS104"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S104.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Filtering Standards by SS Name</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S105" rows="9">
+DELETE FROM StateStandardStandardFlag_TBL WHERE StandardFlagID = 00000000 AND YearID = @YearID
+AND StateStandardID NOT in (SELECT StateStandardID FROM StateStandards_TBL WHERE YearID = @YearID AND Status = 'Custom')
+INSERT INTO StateStandardStandardFlag_TBL (StandardFlagID, StateStandardID, YearID)
+SELECT 00000000, StateStandardID, @YearID FROM StateStandards_TBL WHERE DistrictID = 0000 AND YearID = @YearID
+AND ContentareaID in (00000000)
+AND Statestandard LIKE 'name1%' COLLATE SQL_Latin1_General_CP1_CS_AS
+AND Statestandard LIKE 'name2%' COLLATE SQL_Latin1_General_CP1_CS_AS
+AND StateStandardID NOT in (SELECT StateStandardID FROM StateStandards_TBL WHERE Status='Custom' AND YearID = @YearID)
+AND StateStandardID NOT in (SELECT StateStandardID FROM StateStandards_TBL WHERE YearID = @YearID AND Status = 'Custom')</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS105"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S105 = document.getElementById("S105"); 
+							var button = document.getElementById("copyS105"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S105.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+			</div>
+			<div id="TAB2" class="tabContent">
+				<div class="title">Making Standards Obsolete</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S201" rows="1">
+UPDATE Statestandards_TBL SET bitOBSOLETE = 1 WHERE ContentareaID in (00000000) AND YearID = @YearID</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS201"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S201 = document.getElementById("S201"); 
+							var button = document.getElementById("copyS201"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S201.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Making Standards Unobsolete</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S202" rows="1">
+UPDATE Statestandards_TBL SET bitOBSOLETE = 0 WHERE ContentareaID in (00000000) AND YearID = @YearID</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS202"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S202 = document.getElementById("S202"); 
+							var button = document.getElementById("copyS202"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S202.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+			</div>
+			<div id="TAB3" class="tabContent">
+				<div class="title">Pushing All but Certain Contentarea(s)</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S301" rows="4">
+DELETE FROM Statestandards_TBL WHERE DistrictID = 0000 AND ContentareaID in (00000000) AND YearID = @YearID
+DELETE FROM Statestandardlevels_TBL WHERE DistrictID = 0000 AND ContentareaID in (00000000) AND YearID = @YearID
+DELETE FROM Contentsubareas_TBL WHERE DistrictID = 0000 AND ContentareaID in (00000000) AND YearID = @YearID
+DELETE FROM Contentareas_TBL WHERE DistrictID = 0000 AND ContentareaID in (00000000) AND YearID = @YearID</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS301"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S301 = document.getElementById("S301"); 
+							var button = document.getElementById("copyS301"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S301.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Pushing All but Certain Benchmarklevel(s)</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S302" rows="3">
+DELETE FROM Statestandards_TBL WHERE DistrictID = 0000 AND BenchmarklevelID in (00000000) AND YearID = @YearID
+DELETE FROM Statestandardlevels_TBL WHERE DistrictID = 0000 AND BenchmarklevelID in (00000000) AND YearID = @YearID
+DELETE FROM Benchmarklevels_TBL WHERE DistrictID = 0000 AND BenchmarklevelID in (00000000) AND YearID = @YearID</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS302"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S302 = document.getElementById("S302"); 
+							var button = document.getElementById("copyS302"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S302.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+			</div>
+			<div id="TAB4" class="tabContent">
+				<div class="title">Renaming Contentarea</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S401" rows="2">
+UPDATE Contentareas_TBL
+SET Contentarea = 'The New Name' WHERE DistrictID = 0000 AND ContentareaID = 00000000 AND YearID = @YearID</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS401"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S401 = document.getElementById("S401"); 
+							var button = document.getElementById("copyS401"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S401.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Renaming Contentsubarea</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S402" rows="2">
+UPDATE Contentsubareas_TBL
+SET Contentsubarea = 'The New Name' WHERE DistrictID = 0000 AND ContentsubareaID = 00000000 AND YearID = @YearID</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS402"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S402 = document.getElementById("S402"); 
+							var button = document.getElementById("copyS402"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S402.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Renaming Benchmarklevel</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S403" rows="2">
+UPDATE Benchmarklevels_TBL
+SET Benchmarklevel = 'The New Name' WHERE DistrictID = 0000 AND BenchmarklevelID = 00000000 AND YearID = @YearID</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS403"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S403 = document.getElementById("S403"); 
+							var button = document.getElementById("copyS403"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S403.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Renaming StateStandardlevel</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S404" rows="2">
+UPDATE Statestandardlevels_TBL
+SET Leveltitle = 'The New Name' WHERE DistrictID = 0000 AND StatestandardlevelID = 00000000 AND YearID = @YearID</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS404"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S404 = document.getElementById("S404"); 
+							var button = document.getElementById("copyS404"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S404.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Renaming StateStandardlevel</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S505" rows="2">
+UPDATE statestandards_TBL
+SET Statestandard = 'The New Name' WHERE DistrictID = 0000 AND StatestandardID = 00000000 AND YearID = @YearID</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS505"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S505 = document.getElementById("S505"); 
+							var button = document.getElementById("copyS505"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S505.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Renaming the 5-level Structure</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S506" rows="9">
+UPDATE StateStandardlevelsbase_TBL
+SET Label = CASE
+WHEN NextLevel LIKE 'Contentarea%' THEN 'New Content Area Name'
+WHEN NextLevel LIKE 'Contentsubarea%' THEN 'New Content Sub Area Name'
+WHEN NextLevel LIKE 'Benchmarklevel%' THEN 'New Benchmark Level Name'
+WHEN NextLevel LIKE 'Statestandardlevel%' THEN 'New State Standard Level Name'
+WHEN NextLevel LIKE 'Statestandard%' THEN 'New State Standard Name'
+END
+WHERE YearID = @YearID AND DistrictID = 0000</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS506"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S506 = document.getElementById("S506"); 
+							var button = document.getElementById("copyS506"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S506.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+			</div>
+			<div id="TAB5" class="tabContent">
+				<div class="title">Giving Custom Status (Push to SET)</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S501" rows="5">
+UPDATE Contentareas_TBL SET Status = 'CUSTOM', bCUSTOM = 1 WHERE DistrictID = 00000000 AND YearID = @YearID
+UPDATE Benchmarklevels_TBL SET Status = 'CUSTOM', bCUSTOM = 1 WHERE DistrictID = 00000000 AND YearID = @YearID
+UPDATE Contentsubareas_TBL SET Status = 'CUSTOM' WHERE DistrictID = 00000000 AND YearID = @YearID
+UPDATE Statestandardlevels_TBL SET Status = 'CUSTOM' WHERE DistrictID = 00000000 AND YearID = @YearID
+UPDATE Statestandards_TBL SET Status = 'CUSTOM' WHERE DistrictID = 00000000 AND YearID = @YearID</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS501"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S501 = document.getElementById("S501"); 
+							var button = document.getElementById("copyS501"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S501.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Removing Custom Status</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S502" rows="5">
+UPDATE Contentareas_TBL SET Status = 'NULL', bCUSTOM = 0 WHERE DistrictID = 1 AND ContentareaID in (00000000) AND YearID = @YearID
+UPDATE Benchmarklevels_TBL SET Status = 'NULL', bCUSTOM = 0 WHERE DistrictID = 1 AND BenchmarklevelID in (00000000) AND YearID = @YearID
+UPDATE Contentsubareas_TBL SET Status = 'NULL' WHERE DistrictID = 1 AND ContentareaID in (00000000) AND YearID = @YearID
+UPDATE Statestandardlevels_TBL SET Status = 'NULL' WHERE DistrictID = 1 AND ContentareaID in (00000000) AND YearID = @YearID
+UPDATE Statestandards_TBL SET Status = 'NULL' WHERE DistrictID = 1 AND ContentareaID in (00000000) AND YearID = @YearID </textarea>
+						</div>
+						<div class="script-btn"><button id="copyS502"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S502 = document.getElementById("S502"); 
+							var button = document.getElementById("copyS502"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S502.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Moving CSA(s) to Another CA</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S503" rows="6">
+UPDATE Contentsubareas_TBL 
+SET ContentareaID = 'where you want it to go' WHERE YearID = @YearID AND ContentareaID = 'where it current is'
+UPDATE Statestandards_TBL
+SET ContentareaID = 'where you want it to go' WHERE YearID = @YearID AND ContentareaID = 'where it current is'
+UPDATE Statestandardlevels_TBL
+SET ContentareaID = 'where you want it to go' WHERE YearID = @YearID AND ContentareaID = 'where it current is'</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS503"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S503 = document.getElementById("S503"); 
+							var button = document.getElementById("copyS503"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S503.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+				<div class="title">Moving Standard(s) to Another BL</div>
+				<div class="stage">
+					<div class="script">
+						<div class="script-txt"><textarea id="S504" rows="4">
+UPDATE Statestandardlevels_TBL SET BenchmarklevelID = 'where you want it to go'
+WHERE YearID = @YearID AND BenchmarklevelID = 'where it current is' AND ContentareaID = 00000000
+UPDATE Statestandards_TBL SET BenchmarklevelID = 'where you want it to go'
+WHERE YearID = @YearID AND BenchmarklevelID = 'where it current is' AND ContentareaID = 00000000</textarea>
+						</div>
+						<div class="script-btn"><button id="copyS504"><span class="icon-box"><i class="far fa-copy"></i></span><span>Copy Script</span></button></div>
+						<script>
+							var S504 = document.getElementById("S504"); 
+							var button = document.getElementById("copyS504"); 
+								button.addEventListener("click", function (event) {
+								event.preventDefault(); S504.select(); document.execCommand("copy");});
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">document.getElementById("defaultOpen").click();</script>
+	</section>
+	<footer>
+		<div class="version">
+			<span class="version-name">Deployment Team - Version 1.5.1</span>
+			<span class="version-link">Powered by <a href="https://airtable.com/" target="_blank"><img src="images/airtable.png">Airtable</a></span>
+		</div>
+	</footer>
+</body>
+</html>
+
+
